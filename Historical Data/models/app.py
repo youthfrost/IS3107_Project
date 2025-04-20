@@ -1,3 +1,5 @@
+# Streamlit application for predicting YouTube video popularity
+
 import streamlit as st
 import numpy as np
 import pandas as pd
@@ -34,7 +36,28 @@ scaler = joblib.load(scaler_path)
 ohe = joblib.load(ohe_path)
 tfidf = joblib.load(tfidf_path)
 
-st.title("📊 YouTube Popularity Predictor")
+with st.sidebar.expander("About this App"):
+    st.markdown("""
+    This application predicts the **Popularity Class** of a YouTube video based on metadata provided by the user.  
+                
+    It uses a pre-trained **neural network model** with hyperparameter tuning performed.
+
+    ---
+                
+    ### 🎯 What does it predict?
+    The model classifies videos into **4 Popularity Classes**:
+    - **Class 0**: Low popularity  
+    - **Class 1**: Moderate popularity  
+    - **Class 2**: High popularity  
+    - **Class 3**: Viral content  
+
+    These predictions are based on patterns found in historical trending US Youtube data.
+                
+    *Credits: YouTube Trending Video Dataset (updated Daily) [https://www.kaggle.com/datasets/rsrishav/youtube-trending-video-dataset/data?select=US_youtube_trending_data.csv]*
+    """)
+
+st.title("📊 YouTube Popularity Predictor powered by Neural Network")
+st.subheader("🎬 Will Your Video Go Viral?🔥")
 
 # User inputs
 published_month = st.selectbox("Published Month", list(range(1, 13)))
@@ -45,7 +68,7 @@ categoryId = st.selectbox("Category ID", ['Film & Animation', 'Autos & Vehicles'
 
 title = st.text_input("Video Title")
 channelTitle = st.text_input("Channel Title")
-tags = st.text_input("Tags")
+tags = st.text_input("Tags (Follow the format: *'tag1 | tag2 | tag3' etc*)")
 description = st.text_area("Video Description")
 
 if st.button("Predict"):
