@@ -10,6 +10,7 @@ import os
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "../aesthetic-nova-454803-r7-94e7eb0af61c.json"
 
 # GCS config
+# We will be calling the GCS bucket which we have stored our trained model as well as fitted scalar, ohe, tfidf
 BUCKET_NAME = "youtube-trending-videos-dataset"
 GCS_MODEL_DIR = "trained_models"
 
