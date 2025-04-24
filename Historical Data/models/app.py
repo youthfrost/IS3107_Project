@@ -1,4 +1,8 @@
 # Streamlit application for predicting YouTube video popularity
+### Installation and running of Streamlit UI Server ###
+# !pip install streamlit
+# >> cd to this directory
+# >> streamlit run app.py
 
 import streamlit as st
 import numpy as np
@@ -83,7 +87,7 @@ if st.button("Predict"):
         'description': description
     }])
 
-    # Preprocess same way as training
+    # Preprocess same way as training (use stored scalar, ohe, tfidf)
     X_num = scaler.transform(df_input[['published_month', 'tagCount']])
     X_cat = ohe.transform(df_input[['published_dayOfWeek', 'categoryId']])
     
