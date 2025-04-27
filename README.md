@@ -28,55 +28,52 @@ The ML models complement this by predicting the likelihood of a video’s succes
 - Tensorflow
 - Keras Tuner 
 
-
-
-
-
 ## Repository Structure
 
 ```plaintext 
-IS3107_Project
+IS3107_Project/
+|
+├── API Streaming/
+|   ├── Airflow/     # Airflow DAGs
+|   |   ├── ER2_trending_daily_google_bq.py
+|   |   ├── ER2_youtube_channel_videos_google_bq.py
+|   |   ├── ER2_youtube_channels_google_bq.py
+|   |
+|   ├── creating_tablesBigQuery_youtube_api.ipynb     # Creating BigQuery Tables for Streaming Data
+|
 ├── Assets/
 |   ├── Data_Pipeline.png
 |   ├── ELTL_Historical.png
 |   ├── ER_Diagram_Airflow.png
 |   ├── ML_Model_Deployment.png
 |
-├── API Streaming/
-|   ├── Airflow/
-|   |   ├── ER2_trending_daily_google_bq.py
-|   |   ├── ER2_youtube_channel_videos_google_bq.py
-|   |   ├── ER2_youtube_channels_google_bq.py
-|   |
-|   ├── creating_tablesBigQuery_youtube_api.ipynb
-|
 ├── Historical Data/
-|   ├── kaggle_data/
+|   ├── kaggle_data/     # US Historical YouTube Trending Videos Dataset
 |   |   ├── US_category_id.json
 |   |   ├── US_youtube_trending_data.csv
 |   |
 |   ├── models/
-|   |   ├── keras_tuner_dir/
-|   |   ├── train_test_data/
+|   |   ├── keras_tuner_dir/     # Keras Tuner outputs for Hyperparameter Tuning
+|   |   ├── train_test_data/     # ML Train, test parquet files
 |   |   |   ├── test_dataset.parquet
 |   |   |   ├── train_dataset.parquet
 |   |   |
-|   |   ├── trained_models/
-|   |   |   ├── Historical_TrainedModels_LoadGCS.ipynb
+|   |   ├── trained_models/     # Trained Neural Network Tuned ML model + Preprocessing Tools
+|   |   |   ├── Historical_TrainedModels_LoadGCS.ipynb     # Load model + preprocesing tools to GCS
 |   |   |   ├── ohe.pkl
 |   |   |   ├── scaler.pkl
 |   |   |   ├── tdidf.pkl
 |   |   |   ├── tuned_NN_model.h5
 |   |   |
-|   |   ├── app.py
+|   |   ├── app.py     # Streamlit Web UI for Deployed Neural Network ML Model (from GCS)
 |   |   ├── Historical_ML_SVC_RF_XGBoost.ipynb
 |   |   ├── Hisotrical_ML_NN.ipynb
 |   |   
-|   ├── Historical_ML_EDA.ipynb
-|   ├── Historical_TransformLoad_BigQuery.ipynb
-|   ├── Historical_YoutubeTrending.ipynb
+|   ├── Historical_ML_EDA.ipynb     # EDA for US Historical YouTube Trending Videos Dataset
+|   ├── Historical_TransformLoad_BigQuery.ipynb     # Transform data and Load into BigQuery
+|   ├── Historical_YoutubeTrending.ipynb     # Load CSV Kaggle file into GCS
 |   ├── US_youtube_trending_data.parquet
-|   ├── youtube_113_countries.ipynb
+|   ├── youtube_113_countries.ipynb     # 113 countries YouTube Trending Videos Dataset
 |
 ├── .gitattributes
 ├── .gitignore
